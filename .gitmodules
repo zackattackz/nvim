@@ -1,0 +1,21 @@
+[submodule "pack/nvplugs/start/vim-sleuth"]
+	path = pack/nvplugs/start/vim-sleuth
+	url = git@github.com:tpope/vim-sleuth.git
+[submodule "pack/nvplugs/start/chadtree"]
+	path = pack/nvplugs/start/chadtree
+	url = git@github.com:ms-jpq/chadtree.git
+[submodule "pack/nvplugs/start/telescope.nvim"]
+	path = pack/nvplugs/start/telescope.nvim
+	url = git@github.com:nvim-telescope/telescope.nvim.git
+[submodule "pack/nvplugs/start/plenary.nvim"]
+	path = pack/nvplugs/start/plenary.nvim
+	url = git@github.com:nvim-lua/plenary.nvim.git
+[submodule "pack/nvplugs/start/telescope-file-browser.nvim.git"]
+	path = pack/nvplugs/start/telescope-file-browser.nvim.git
+	url = git@github.com:nvim-telescope/telescope-file-browser.nvim.git
+[submodule "pack/nvplugs/start/telescope-project.nvim.git"]
+	path = pack/nvplugs/start/telescope-project.nvim.git
+	url = git@github.com:nvim-telescope/telescope-project.nvim.git
+[submodule "pack/nvplugs/start/hop.nvim"]
+	path = pack/nvplugs/start/hop.nvim
+	url = git@github.com:smoka7/hop.nvim.git
