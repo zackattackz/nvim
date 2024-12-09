@@ -19,3 +19,48 @@
 [submodule "pack/nvplugs/start/hop.nvim"]
 	path = pack/nvplugs/start/hop.nvim
 	url = git@github.com:smoka7/hop.nvim.git
+[submodule "pack/nvplugs/start/nvim-lspconfig"]
+	path = pack/nvplugs/start/nvim-lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git
+[submodule "pack/nvplugs/start/nvim-dap"]
+	path = pack/nvplugs/start/nvim-dap
+	url = git@github.com:mfussenegger/nvim-dap.git
+[submodule "pack/nvplugs/start/nvim-nio"]
+	path = pack/nvplugs/start/nvim-nio
+	url = git@github.com:nvim-neotest/nvim-nio.git
+[submodule "pack/nvplugs/start/nvim-dap-ui"]
+	path = pack/nvplugs/start/nvim-dap-ui
+	url = git@github.com:rcarriga/nvim-dap-ui.git
+[submodule "pack/nvplugs/start/trouble.nvim"]
+	path = pack/nvplugs/start/trouble.nvim
+	url = git@github.com:folke/trouble.nvim.git
+[submodule "pack/nvplugs/start/cmp-nvim-lsp"]
+	path = pack/nvplugs/start/cmp-nvim-lsp
+	url = git@github.com:hrsh7th/cmp-nvim-lsp.git
+[submodule "pack/nvplugs/start/cmp-buffer"]
+	path = pack/nvplugs/start/cmp-buffer
+	url = git@github.com:hrsh7th/cmp-buffer.git
+[submodule "pack/nvplugs/start/cmp-path"]
+	path = pack/nvplugs/start/cmp-path
+	url = git@github.com:hrsh7th/cmp-path.git
+[submodule "pack/nvplugs/start/cmp-cmdline"]
+	path = pack/nvplugs/start/cmp-cmdline
+	url = git@github.com:hrsh7th/cmp-cmdline.git
+[submodule "pack/nvplugs/start/nvim-cmp"]
+	path = pack/nvplugs/start/nvim-cmp
+	url = git@github.com:hrsh7th/nvim-cmp.git
+[submodule "pack/nvplugs/start/cmp-vsnip"]
+	path = pack/nvplugs/start/cmp-vsnip
+	url = git@github.com:hrsh7th/cmp-vsnip
+[submodule "pack/nvplugs/start/vim-vsnip"]
+	path = pack/nvplugs/start/vim-vsnip
+	url = git@github.com:hrsh7th/vim-vsnip
+[submodule "pack/nvplugs/start/Comment.nvim"]
+	path = pack/nvplugs/start/Comment.nvim
+	url = git@github.com:numToStr/Comment.nvim.git
+[submodule "pack/nvplugs/start/cmp-nvim-lsp-signature-help"]
+	path = pack/nvplugs/start/cmp-nvim-lsp-signature-help
+	url = git@github.com:hrsh7th/cmp-nvim-lsp-signature-help.git
+[submodule "pack/nvplugs/start/nvim"]
+	path = pack/nvplugs/start/nvim
+	url = git@github.com:catppuccin/nvim.git
