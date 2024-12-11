@@ -95,7 +95,7 @@ cmp.setup({
                 else
                     cmp.select_next_item()
                 end
-            elseif vim.fn["vsnip#available"](1) then
+            elseif vim.fn["vsnip#available"](1) ~= 0 then
                 feedkey("<Plug>(vsnip-expand-or-jump)", "")
             elseif has_words_before() then
                 cmp.complete()
