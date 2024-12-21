@@ -2,14 +2,51 @@ vim.g.mapleader = " "
 vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/vsnip"
 vim.cmd("colorscheme catppuccin-mocha")
 vim.api.nvim_set_option_value("termguicolors", true, {})
-require("telescope").setup({})
+vim.o.relativenumber = true
+vim.o.number = true
+vim.o.statuscolumn = "%s %l %r"
+local ts_actions = require("telescope.actions")
+require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<A-i>"] = ts_actions.close
+            },
+        },
+    }
+})
 require("telescope").load_extension('file_browser')
 require("telescope").load_extension('project')
+require("telescope").load_extension('ui-select')
 require("hop").setup({})
 require("dapui").setup()
 require("trouble").setup()
 require("Comment").setup()
+local sess_conf = require('session_manager.config')
+require('session_manager').setup({
+    autosave_only_in_session = true;
+    autoload_mode = { sess_conf.AutoloadMode.CurrentDir, sess_conf.AutoloadMode.LastSession }
+})
+require('persistent-breakpoints').setup{
+	load_breakpoints_event = { "SessionLoadPost" }
+}
 local cmp = require("cmp")
+
+function SessionExists()
+    local sess_config = require('session_manager.config')
+    local cwd = vim.fn.getcwd()
+    local sess_path = sess_config.dir_to_session_filename(cwd).filename
+    return vim.fn.filereadable(sess_path) == 1
+
+end
+
+vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
+    callback = function()
+        if not SessionExists() then
+            vim.cmd("SessionManager save_current_session")
+        end
+    end,
+})
 
 function IsChadTreeOpen()
     for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -122,7 +159,16 @@ cmp.setup({
         { name = 'nvim_lsp_signature_help' },
     }, {
         { name = 'buffer' },
-    })
+    }),
+    enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+        or require("cmp_dap").is_dap_buffer()
+    end
+})
+cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  sources = {
+    { name = "dap" },
+  },
 })
 local cmdlineMapping = {
     ['<Tab>'] = {
@@ -231,20 +277,30 @@ dap.configurations.python = {
 --   }
 -- }
 do
+    local telescope_fb_opts = {grouped = true; hide_parent_dir = true; cwd_to_path = true; }
     local keybindings = {
         { action = "<cmd>Telescope find_files<cr>", key = "<leader> ", mode = "n" },
         { action = "<cmd>Telescope buffers<cr>", key = "<leader>b", mode = "n" },
         { action = "<cmd>Telescope live_grep<cr>", key = "<leader>g", mode = "n" },
         { action = "<cmd>Telescope jumplist<cr>", key = "<leader>o", mode = "n" },
         { action = "<cmd>Telescope oldfiles<cr>", key = "<leader>p", mode = "n" },
+        { action = function() vim.cmd("SessionManager load_session") end, key = "<leader>s", mode = "n", options = { noremap = true, silent = true } },
+        { action = "<Esc>", key = "<A-i>", mode = {"n", "i", "v", "c", "o"}, options = { noremap = true, silent = true } },
         { action = "<NOP>", key = " ", mode = "n" },
-        { action = ":Telescope file_browser<CR>", key = "<leader>ft", mode = "n" },
+        -- { action = ":Telescope file_browser path=%:p:h select_buffer=true<CR>", key = "<C-e>", mode = "n", options = { silent = true; } },
+        { action = function() require("telescope").extensions.file_browser.file_browser(vim.tbl_deep_extend('force', telescope_fb_opts, {path="%:p:h"; select_buffer=true;})) end, key = "<C-e>", mode = "n", options = { silent = true; } },
+        { action = function() require("telescope").extensions.file_browser.file_browser(telescope_fb_opts) end, key = "<C-M-e>", mode = "n", options = { silent = true; } },
         { action = ":Telescope project<CR>", key = "<leader>fp", mode = "n" },
-        { action = ":lua ToggleChadTree()<CR>", key = "<C-e>", mode = "n", options = { remap = true } },
         { action = function() vim.lsp.buf.hover() end, key = "<C-p>", mode = {"n", "i"}, options = { remap = true } },
+        { action = function() require("dapui").toggle() end, key = "<leader>=", mode = "n", options = { noremap = true } },
+        { action = function() require('persistent-breakpoints.api').toggle_breakpoint() end, key = "<leader>]", mode = "n", options = { noremap = true } },
+        { action = function() require('persistent-breakpoints.api').set_conditional_breakpoint() end, key = "<leader>\\", mode = "n", options = { noremap = true } },
+        { action = function() require("dap").continue() end, key = "<leader>-", mode = "n", options = { noremap = true } },
+        { action = function() require("dap").step_over() end, key = "<leader>9", mode = "n", options = { noremap = true } },
+        { action = function() require("dap").step_into() end, key = "<leader>0", mode = "n", options = { noremap = true } },
         {
             action = function()
-                require("hop").hint_char2({
+                require("hop").hint_char1({
                     direction = require("hop.hint").HintDirection.AFTER_CURSOR,
                 })
             end,
@@ -253,7 +309,7 @@ do
         },
         {
             action = function()
-                require("hop").hint_char2({
+                require("hop").hint_char1({
                     direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
                 })
             end,

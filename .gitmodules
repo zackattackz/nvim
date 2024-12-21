@@ -1,9 +1,6 @@
 [submodule "pack/nvplugs/start/vim-sleuth"]
 	path = pack/nvplugs/start/vim-sleuth
 	url = git@github.com:tpope/vim-sleuth.git
-[submodule "pack/nvplugs/start/chadtree"]
-	path = pack/nvplugs/start/chadtree
-	url = git@github.com:ms-jpq/chadtree.git
 [submodule "pack/nvplugs/start/telescope.nvim"]
 	path = pack/nvplugs/start/telescope.nvim
 	url = git@github.com:nvim-telescope/telescope.nvim.git
@@ -64,3 +61,15 @@
 [submodule "pack/nvplugs/start/nvim"]
 	path = pack/nvplugs/start/nvim
 	url = git@github.com:catppuccin/nvim.git
+[submodule "pack/nvplugs/start/cmp-dap"]
+	path = pack/nvplugs/start/cmp-dap
+	url = git@github.com:rcarriga/cmp-dap.git
+[submodule "pack/nvplugs/start/neovim-session-manager"]
+	path = pack/nvplugs/start/neovim-session-manager
+	url = git@github.com:Shatur/neovim-session-manager.git
+[submodule "pack/nvplugs/start/telescope-ui-select.nvim"]
+	path = pack/nvplugs/start/telescope-ui-select.nvim
+	url = git@github.com:nvim-telescope/telescope-ui-select.nvim.git
+[submodule "pack/nvplugs/start/persistent-breakpoints.nvim"]
+	path = pack/nvplugs/start/persistent-breakpoints.nvim
+	url = git@github.com:Weissle/persistent-breakpoints.nvim.git
