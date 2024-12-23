@@ -45,6 +45,7 @@ require('persistent-breakpoints').setup{
 	load_breakpoints_event = { "SessionLoadPost" }
 }
 require("nvim-surround").setup()
+require('config-local').setup({ silent = true; })
 local cmp = require("cmp")
 
 function SessionExists()

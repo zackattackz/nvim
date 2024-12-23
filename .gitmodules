@@ -76,3 +76,6 @@
 [submodule "pack/nvplugs/start/nvim-surround"]
 	path = pack/nvplugs/start/nvim-surround
 	url = git@github.com:kylechui/nvim-surround.git
+[submodule "pack/nvplugs/start/nvim-config-local"]
+	path = pack/nvplugs/start/nvim-config-local
+	url = git@github.com:klen/nvim-config-local.git
