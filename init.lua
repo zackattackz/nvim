@@ -6,14 +6,28 @@ vim.o.relativenumber = true
 vim.o.number = true
 vim.o.statuscolumn = "%s %l %r"
 local ts_actions = require("telescope.actions")
+local tsfb_actions = require("telescope").extensions.file_browser.actions
 require("telescope").setup({
     defaults = {
         mappings = {
             i = {
-                ["<A-i>"] = ts_actions.close
+                ["<A-i>"] = ts_actions.close,
+                ["<C-k>"] = ts_actions.move_selection_previous,
+                ["<C-j>"] = ts_actions.move_selection_next,
+                ["<C-l>"] = ts_actions.select_default,
             },
         },
-    }
+    },
+    extensions = {
+        file_browser = {
+            mappings = {
+                ["i"] = {
+                    ["<C-h>"] = tsfb_actions.goto_parent_dir,
+                    ["<C-M-h>"] = tsfb_actions.toggle_hidden,
+                },
+            },
+        },
+    },
 })
 require("telescope").load_extension('file_browser')
 require("telescope").load_extension('project')
@@ -281,7 +295,7 @@ do
     local telescope_fb_opts = {grouped = true; hide_parent_dir = true; cwd_to_path = true; }
     local keybindings = {
         { action = "<cmd>Telescope find_files<cr>", key = "<leader> ", mode = "n" },
-        { action = "<cmd>Telescope buffers<cr>", key = "<leader>b", mode = "n" },
+        { action = function () require('telescope.builtin').buffers({ sort_mru = true; ignore_current_buffer = true; }) end, key = "<leader>b", mode = "n" },
         { action = "<cmd>Telescope live_grep<cr>", key = "<leader>g", mode = "n" },
         { action = "<cmd>Telescope jumplist<cr>", key = "<leader>o", mode = "n" },
         { action = "<cmd>Telescope oldfiles<cr>", key = "<leader>p", mode = "n" },
