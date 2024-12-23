@@ -73,3 +73,6 @@
 [submodule "pack/nvplugs/start/persistent-breakpoints.nvim"]
 	path = pack/nvplugs/start/persistent-breakpoints.nvim
 	url = git@github.com:Weissle/persistent-breakpoints.nvim.git
+[submodule "pack/nvplugs/start/nvim-surround"]
+	path = pack/nvplugs/start/nvim-surround
+	url = git@github.com:kylechui/nvim-surround.git
