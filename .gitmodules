@@ -79,3 +79,12 @@
 [submodule "pack/nvplugs/start/nvim-config-local"]
 	path = pack/nvplugs/start/nvim-config-local
 	url = git@github.com:klen/nvim-config-local.git
+[submodule "pack/nvplugs/start/telescope-live-grep-args.nvim"]
+	path = pack/nvplugs/start/telescope-live-grep-args.nvim
+	url = git@github.com:nvim-telescope/telescope-live-grep-args.nvim.git
+[submodule "pack/nvplugs/start/sqlite.lua"]
+	path = pack/nvplugs/start/sqlite.lua
+	url = git@github.com:kkharji/sqlite.lua.git
+[submodule "pack/nvplugs/start/telescope-smart-history.nvim"]
+	path = pack/nvplugs/start/telescope-smart-history.nvim
+	url = git@github.com:nvim-telescope/telescope-smart-history.nvim.git
