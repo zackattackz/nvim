@@ -5,6 +5,9 @@ vim.api.nvim_set_option_value("termguicolors", true, {})
 vim.o.relativenumber = true
 vim.o.number = true
 vim.o.statuscolumn = "%s %l %r"
+if vim.fn.has('win32') == 1 then
+    vim.g.sqlite_clib_path = vim.fn.expand("$HOME/.bin/sqlite3.dll")
+end
 local telescope = require("telescope")
 local ts_actions = require("telescope.actions")
 local tsfb_actions = telescope.extensions.file_browser.actions
