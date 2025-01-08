@@ -59,6 +59,7 @@ require('persistent-breakpoints').setup{
 }
 require("nvim-surround").setup()
 require('config-local').setup({ silent = true; })
+require("autoclose").setup()
 local cmp = require("cmp")
 
 function SessionExists()
